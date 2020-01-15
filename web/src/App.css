@@ -1,0 +1,12 @@
+/* Flex direction é para deixar todo mundo um do lado do outro
+align-items: Flex start para ficar alinhados em cima.
+*/
+#app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 30px;
+  
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}

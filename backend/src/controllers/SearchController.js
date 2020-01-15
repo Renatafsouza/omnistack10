@@ -13,8 +13,18 @@ module.exports = {
 
         const devs = await Dev.find({
            techs: {  // aqui cabem vários filtros
-               $in: techsArray  //o que tem dentro do array do banco. O que rola é que $in é um operador do mongoDB."Mongo operators"
-           }     
+               $in: techsArray  // O que tem dentro do array do banco. O que rola é que $in é um operador do mongoDB."Mongo operators"
+           },
+           location: {
+               $near: {
+                   $geometry: {
+                       type: 'Point',
+                       coordinates: [ latitude, longitude ]
+                    },
+                    $maxDistance: 10000,  // 10000 metros = 10km
+                }
+            }
+             
         });
 
         return response.json({ devs});
