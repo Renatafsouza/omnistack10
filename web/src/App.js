@@ -71,6 +71,8 @@ function App() {
 
     setGitHubUsername('');
     setTechs('');
+
+    setDevs([...devs, response.data]); //no react não existe devs.push, devido o conceito de imutabilidade. então criou um novo array e copiou os valores "...dev"
     console.log(response.data);
   }
  
@@ -137,53 +139,20 @@ function App() {
      <main>
 
        <ul>
-         <li className="dev-item">
-            <header>
-              <img src="https://avatars3.githubusercontent.com/u/20937435?s=460&v=4" alt=""/>
-              <div className="user-info">
-                <strong>Renata Francelino</strong>
-                <span>ReactJS, React Native, NodeJS</span>
-              </div>
-            </header>
-            <p>Alguma Bio Aqui</p>
-            <a href="https://github.com/Renatafsouza">Acessar perfil no Github</a>
-         </li>
+         {devs.map(dev => (
+           <li key={dev._id} className="dev-item">
+           <header>
+             <img src={dev.avatar_url} alt={dev.name}/>
+             <div className="user-info">
+               <strong>{dev.name}</strong>
+               <span>{dev.techs.join(', ')}</span>
+             </div>
+           </header>
+           <p>{dev.bio}</p>
+           <a href={`https://github.com/${dev.github_username}`}>Acessar perfil no Github</a>
+          </li>
+         ))}   
 
-         <li className="dev-item">
-            <header>
-              <img src="https://avatars3.githubusercontent.com/u/20937435?s=460&v=4" alt=""/>
-              <div className="user-info">
-                <strong>Renata Francelino</strong>
-                <span>ReactJS, React Native, NodeJS</span>
-              </div>
-            </header>
-            <p>Alguma Bio Aqui</p>
-            <a href="https://github.com/Renatafsouza">Acessar perfil no Github</a>
-         </li>
-
-         <li className="dev-item">
-            <header>
-              <img src="https://avatars3.githubusercontent.com/u/20937435?s=460&v=4" alt=""/>
-              <div className="user-info">
-                <strong>Renata Francelino</strong>
-                <span>ReactJS, React Native, NodeJS</span>
-              </div>
-            </header>
-            <p>Alguma Bio Aqui</p>
-            <a href="https://github.com/Renatafsouza">Acessar perfil no Github</a>
-         </li>
-
-         <li className="dev-item">
-            <header>
-              <img src="https://avatars3.githubusercontent.com/u/20937435?s=460&v=4" alt=""/>
-              <div className="user-info">
-                <strong>Renata Francelino</strong>
-                <span>ReactJS, React Native, NodeJS</span>
-              </div>
-            </header>
-            <p>Alguma Bio Aqui</p>
-            <a href="https://github.com/Renatafsouza">Acessar perfil no Github</a>
-         </li>
        </ul>
 
      </main>
