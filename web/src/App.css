@@ -10,3 +10,24 @@ align-items: Flex start para ficar alinhados em cima.
   flex-direction: row;
   align-items: flex-start;
 }
+
+#app main {
+    margin-left: 30px;
+    width: 100%;
+}
+
+@media (max-width: 1000px) {
+    #app {
+        flex-direction: column;
+    }
+
+    #app main {
+        margin-left: 0;
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    #app aside {
+        width: 100%;
+    }
+}
